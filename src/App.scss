@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
+  -webkit-appearance: none;
+  -webkit-animation: none;
+  outline: none;
+  border: none;
+}
+
+*::-webkit-inner-spin-button{
+  display: none;
+}
+
+html, body, #root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.qr-code-generator {
+  width: 1000px;
+  margin: 0 auto;
+  margin-bottom: 200px;
+}
+
+.qr-code-generator {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#qrcode {
+  width: 128px;
+  height: 128px;
+}
+
+#qrcode a {
+  font-size: 0.8em;
+}
+
+.qr-url,
+.qr-size {
+  padding: 0.5em;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.qr-url {
+  width: 79%;
+}
+
+.qr-size {
+  width: 20%;
+}
+
+.generate-qr-code {
+  display: block;
+  width: 100%;
+  margin: 0.5em 0 0;
+  padding: 0.25em;
+  font-size: 1.2em;
+  border: none;
+  cursor: pointer;
+  background-color: #000000;
+  box-shadow: 0px 2px 6px black;
+  color: #fff;
+}
+
+@keyframes focus{
+  from{
+    background-color: #00000050
+  }
+
+  to{
+    background-color: transparent
+  }
+}
+
+.QRCodeDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2rem 2rem 0;
+  height: fit-content;
+}
+
+.QRCodeDiv > div > canvas{
+  margin-top: auto;
+
+}
+
+.QRCodeNome {
+  max-width: 17rem;
+  align-self: center;
+  font-weight: bolder;
+  word-break: keep-all;
+  line-break: break-all;
+  text-align: center;
+  overflow: hidden;
+}
+
+.QRCodeDivAll {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+  background: #fff
+}
+
+.QRCodeDivContainerPai {
+  width: 55%;
+  vertical-align: middle;
+  display: flex;
+  align-items:center
+}
+
+.QRCodeDivContainer { 
+  margin:auto;
+  vertical-align: middle;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  align-self: center;
+  border-radius: 1rem;
+  transition: 200ms;
+  background: #fff;
+  box-shadow:  10px 10px 30px #bebebe,
+  -10px -10px 30px #ffffff;
+  
+  &:hover{
+    box-shadow:  20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+  }
+
+  & > button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: .5rem 0;
+    width: fit-content;
+    border-radius: .5rem;
+    background-color: transparent;
+    cursor: pointer;
+    padding: .5rem;
+    font-weight: bolder;
+    border: none;
+
+    &:hover{
+      opacity: .7;
+    }
+
+    & > svg {
+      width: 1rem;
+      min-width: 1rem;
+      height: 1rem;
+      min-height: 1rem;
+      fill: #2e7d32;
+      margin-left: .5rem
+    }
+  }
+}
+
+.QRCodeDivInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: fit-content;
+  align-self: center;
+  gap: 3rem;
+  padding: .5rem;
+  height: 100%;
+  transition: 200ms;  
+  background: #fff;
+  box-shadow:  20px 20px 60px #bebebe,
+  -20px -20px 60px #ffffff;
+  & > svg{
+    width: 36%;
+    margin-bottom: 5rem;
+  }
+}
+
+.QRCodeImage {
+  width: 30%;
+  align-self: center;
+  margin-bottom: 25px;
+}
+
+.QRCodeInput {
+  width: 70%;
+  padding: .5rem;
+  font-size: 1rem;
+  border: none;
+  transition: 200ms;
+  border-bottom: solid 2px #bebebe80;
+  border-radius: .3rem .3rem 0 0;
+  
+  &:focus{
+    animation: focus 1s;
+    border-bottom: solid 2px #bebebe;
+  }
+}
+
+.QRCodeDivValues {
+  display: flex;
+  flex-direction: column;
+  border: 0;
+}
+@media only screen and (max-width:768px) {
+  .QRCodeDivAll {
+    box-sizing: border-box;
+    flex-direction: column;
+  }
+  .QRCodeImage {
+    width: 30%;
+    align-self: center;
+    margin-bottom: 25px;
+  }
+  .QRCodeDivInput {
+    padding-top:4rem;
+    padding-bottom: 4rem;
+    width: 100%;
+    box-sizing: border-box
+  }
+  .QRCodeDivContainerPai {
+    margin-top: 5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .QRCodeDivContainer {
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: none;
+    margin-bottom: 2rem;
+    &:hover{
+      box-shadow:  none;
+    }
+  }
+  .QRCodeDiv {
+    box-sizing: border-box;
+    width: 100%;
+  }
+  #canvas {
+    width:100% !important;
+    height:auto !important;
+  }
+  .QRInput {
+    &:focus{
+      border-bottom: none;
+    }
+  }
+}
