@@ -13,6 +13,16 @@ export default function IndexProvider({ children }) {
     localStorage.setItem('email', email)
     localStorage.setItem('numero', numero)
 
+    if (nome === null) {
+      setNome("")
+    }
+    if (email === null) {
+      setEmail("")
+    }
+    if (numero === null) {
+      setNumero("")
+    }
+
     var nomeQR,
     element =  document.getElementById("QRNome")
     if(element != null) {
