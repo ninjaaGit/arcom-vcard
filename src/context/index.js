@@ -29,7 +29,7 @@ export default function IndexProvider({ children }) {
       nomeQR = element.value;
     }
     else {
-      nomeQR = null;
+      nomeQR = "";
     }
 
     var emailQR,
@@ -38,7 +38,7 @@ export default function IndexProvider({ children }) {
       emailQR = element2.value;
     }
     else {
-      emailQR = null
+      emailQR = ""
     }
 
     var numeroQR,
@@ -47,7 +47,7 @@ export default function IndexProvider({ children }) {
       numeroQR = element3.value;
     }
     else {
-      numeroQR = null
+      numeroQR = ""
     }
 
     var vcard_begin = 'BEGIN:VCARD\nVERSION:3.0\n';
