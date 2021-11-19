@@ -77,7 +77,7 @@ export default function IndexProvider({ children }) {
         const link = document.createElement("a");
         var imgcomp = img.src = dataUrl;
         link.href = imgcomp
-        link.setAttribute("download", "qrcode.png")
+        link.setAttribute("download", "VCard " + localStorage.getItem('nome') + ".png")
         link.click()
       })
       .catch(function (error) {
