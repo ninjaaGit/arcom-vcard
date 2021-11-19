@@ -207,10 +207,9 @@ html, body, #root {
   font-size: 1rem;
   border: none;
   transition: 200ms;
-  &:focus{
-    animation: focus 1s;
-    border-bottom: solid 2px #bebebe;
-  }
+  border-bottom: solid 2px #bebebe80;
+  border-radius: .3rem .3rem 0 0;
+
 }
 
 .QRCodeDivValues {
