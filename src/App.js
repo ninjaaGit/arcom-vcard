@@ -10,7 +10,7 @@ import {ReactComponent as LogoSVG} from './SVGs/logo.svg'
 
 function App() {
 
-  const { setNome, setEmail, setNumero, handleSave, vcard} = React.useContext(IndexContext);
+  const { setNome, setEmail, setNumero, vcard} = React.useContext(IndexContext);
 
   return (
     <div className="QRCodeDivAll">
