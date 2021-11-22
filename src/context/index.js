@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState} from "react";
+import React, { createContext, useState} from "react";
 import domtoimage from 'dom-to-image';
 export const IndexContext = createContext();
 
@@ -23,44 +23,17 @@ export default function IndexProvider({ children }) {
       setNumero("")
     }
 
-    var nomeQR,
-    element =  document.getElementById("QRNome")
-    if(element != null) {
-      nomeQR = element.value;
-    }
-    else {
-      nomeQR = "";
-    }
-
-    var emailQR,
-    element2 = document.getElementById("QREmail")
-    if(element2 != null) {
-      emailQR = element2.value;
-    }
-    else {
-      emailQR = ""
-    }
-
-    var numeroQR,
-    element3 = document.getElementById("QRNumero")
-    if(element3 != null) {
-      numeroQR = element3.value;
-    }
-    else {
-      numeroQR = ""
-    }
-
     var vcard_begin = 'BEGIN:VCARD\nVERSION:3.0\n';
     
     var vcard_end = 'END:VCARD;';
     
-    var nomeV = 'FN:' + nomeQR + '\n';
+    var nomeV = 'FN:' + nome + '\n';
     
-    var nV = 'N:' + ";" + nomeQR + ";"  + '\n';
+    var nV = 'N:' + ";" + nome + ";"  + '\n';
 
-    var emailV = 'EMAIL:'+ emailQR + '\n';
+    var emailV = 'EMAIL:'+ email + '\n';
     
-    var telefoneV = 'TEL;TYPE=CELL:' + numeroQR + '\n';
+    var telefoneV = 'TEL;TYPE=CELL:' + numero + '\n';
 
     var orgV = 'ORG:' + "Arcom" + '\n';
 

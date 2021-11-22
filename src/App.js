@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import './App.scss';
 import {IndexContext} from '../src/context/index'
 import QRCodeCanvas from './QRCodeCanvas';
