@@ -27,10 +27,10 @@ function App() {
                 <QRCodeCanvas text={vcard}></QRCodeCanvas>
                 <h1 className="QRCodeNome">{localStorage.getItem('nome') || "Seu Nome"}</h1>
             </div>
-            <Button color="success" onClick={handleSave}>
+            {/* <Button color="success" onClick={handleSave}>
               DOWNLOAD
               <DownloadSVG/>
-            </Button>
+            </Button> */}
           </div>
         </div>
     </div>
