@@ -10,7 +10,7 @@ import {ReactComponent as LogoSVG} from './SVGs/logo.svg'
 
 function App() {
 
-  const { setNome, setEmail, setNumero, vcard} = React.useContext(IndexContext);
+  const { setNome, setEmail, setNumero, handleSave, vcard} = React.useContext(IndexContext);
 
   return (
     <div className="QRCodeDivAll">
@@ -27,10 +27,10 @@ function App() {
                 <QRCodeCanvas text={vcard}></QRCodeCanvas>
                 <h1 className="QRCodeNome">{localStorage.getItem('nome') || "Seu Nome"}</h1>
             </div>
-            {/* <Button color="success" onClick={handleSave}>
+            <Button color="success" onClick={handleSave}>
               DOWNLOAD
               <DownloadSVG/>
-            </Button> */}
+            </Button>
           </div>
         </div>
     </div>

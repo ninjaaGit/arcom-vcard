@@ -1,5 +1,6 @@
 import React, { createContext, useState} from "react";
 import domtoimage from 'dom-to-image';
+import { jsPDF } from "jspdf";
 export const IndexContext = createContext();
 
 
@@ -45,13 +46,21 @@ export default function IndexProvider({ children }) {
 
     function handleSave() {
       var node = document.getElementById('dados');
+      var doc = new 
       domtoimage.toPng(node).then(function (dataUrl) {
         var img = new Image();
+        var doc = new jsPDF({
+          orientation: "portrait",
+          unit: "in",
+          format: [7.5, 5.8]
+        });
         const link = document.createElement("a");
         var imgcomp = img.src = dataUrl;
         link.href = imgcomp
-        link.setAttribute("download", "VCard " + localStorage.getItem('nome') + ".png")
-        link.click()
+        doc.addImage(imgcomp, 'PNG', 1, 1)
+        doc.save('vCard ' + localStorage.getItem('nome') + '.pdf')
+        // link.setAttribute("download", "VCard " + localStorage.getItem('nome') + ".png")
+        // link.click()
       })
       .catch(function (error) {
         console.error(error);
