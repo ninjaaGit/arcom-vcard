@@ -46,8 +46,8 @@ export default function IndexProvider({ children }) {
 
     function handleSave() {
       var node = document.getElementById('dados');
-      var doc = new 
-      domtoimage.toPng(node).then(function (dataUrl) {
+      var imgTeste = node[0].toDataURL("image/png")
+      domtoimage.toPng(imgTeste).then(function (dataUrl) {
         var img = new Image();
         var doc = new jsPDF({
           orientation: "portrait",
@@ -57,6 +57,7 @@ export default function IndexProvider({ children }) {
         const link = document.createElement("a");
         var imgcomp = img.src = dataUrl;
         link.href = imgcomp
+        console.log(typeof(imgcomp));
         doc.addImage(imgcomp, 'PNG', 1, 1)
         doc.save('vCard ' + localStorage.getItem('nome') + '.pdf')
         // link.setAttribute("download", "VCard " + localStorage.getItem('nome') + ".png")
