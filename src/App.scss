@@ -183,7 +183,7 @@ html, body, #root {
   height: fit-content;
   align-self: center;
   gap: 3rem;
-  padding: .5rem;
+  padding: 5rem .5rem;
   height: 100%;
   transition: 200ms;  
   background: #fff;
@@ -191,7 +191,7 @@ html, body, #root {
   -20px -20px 60px #ffffff;
   & > svg{
     width: 36%;
-    margin-bottom: 5rem;
+    margin-bottom: auto;
   }
 }
 
@@ -231,7 +231,8 @@ html, body, #root {
     padding-top:4rem;
     padding-bottom: 4rem;
     width: 100%;
-    box-sizing: border-box
+    box-sizing: border-box;
+    border-radius: 0 0 2rem 2rem;
   }
   .QRCodeDivContainerPai {
     margin-top: 5rem;
