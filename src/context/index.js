@@ -12,15 +12,7 @@ export default function IndexProvider({ children }) {
     const [fixo, setFixo] = useState(localStorage.getItem('fixo'))
     const [cargo, setCargo] = useState(localStorage.getItem('cargo'))
     const [isMobile, setIsMobile] = React.useState(false)
-    const filesArray = [
-      new File(
-        [imgcomp],
-        'test.jpg',
-        {
-          type: "image/jpeg",
-        }
-      )
-    ];
+    
 
     localStorage.setItem('nome', nome)
     localStorage.setItem('email', email)
@@ -90,7 +82,7 @@ export default function IndexProvider({ children }) {
           format: [7.5, 5.8]
         });
         const link = document.createElement("a");
-        var imgcomp = img.src = dataUrl;
+        imgcomp = img.src = dataUrl;
         link.href = imgcomp
         console.log(imgcomp)
         doc.addImage(imgcomp, 'PNG', 1, 1)
@@ -106,11 +98,17 @@ export default function IndexProvider({ children }) {
 
     function handleShare(){
       var node = document.getElementById('dados');
-      domtoimage.toPng(node).then(function (dataUrl) {
-        var img = new Image();
-        const link = document.createElement("a");
-        var imgcomp = img.src = dataUrl;
-        link.href = imgcomp
+      domtoimage.toBlob(node).then(function (dataUrl) {
+        imgcomp =  dataUrl;
+        const filesArray = [
+          new File(
+            [dataUrl],
+            'test.jpg',
+            {
+              type: "image/jpeg",
+            }
+          )
+        ];
         console.log(imgcomp)
       navigator.share({
         title: 'vCard ' + nome,
