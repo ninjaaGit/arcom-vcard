@@ -12,6 +12,7 @@ export default function IndexProvider({ children }) {
     const [fixo, setFixo] = useState(localStorage.getItem('fixo'))
     const [cargo, setCargo] = useState(localStorage.getItem('cargo'))
     const [isMobile, setIsMobile] = React.useState(false)
+    const filesArray: File[] = [new File([imgcomp], 'teste.jpg', { type: "image/jpeg", lastModified: new Date().getTime() })];
 
     localStorage.setItem('nome', nome)
     localStorage.setItem('email', email)
@@ -99,7 +100,7 @@ export default function IndexProvider({ children }) {
       navigator.share({
         title: 'vCard ' + nome,
         text: 'vCard de ' + nome,
-        url: URL.createObjectURL(imgcomp)
+        file: filesArray
       })
     }
 
