@@ -18,7 +18,6 @@ export default function IndexProvider({ children }) {
         'test.jpg',
         {
           type: "image/jpeg",
-          lastModified: new Date().getTime()
         }
       )
     ];
@@ -109,7 +108,7 @@ export default function IndexProvider({ children }) {
       navigator.share({
         title: 'vCard ' + nome,
         text: 'vCard de ' + nome,
-        file: filesArray
+        files: filesArray
       })
     }
 
