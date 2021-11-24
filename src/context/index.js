@@ -81,9 +81,9 @@ export default function IndexProvider({ children }) {
         const link = document.createElement("a");
         var imgcomp = img.src = dataUrl;
         link.href = imgcomp
-        localStorage.setItem('img', link)
         console.log(imgcomp)
         doc.addImage(imgcomp, 'PNG', 1, 1)
+        localStorage.setItem('doc', doc)
         doc.save('vCard ' + localStorage.getItem('nome') + '.pdf')
         // link.setAttribute("download", "VCard " + localStorage.getItem('nome') + ".png")
         // link.click()
@@ -94,7 +94,11 @@ export default function IndexProvider({ children }) {
     }
 
     function handleShare(){
-      
+      navigator.share({
+        title: 'Teste',
+        text: 'Teste namoral testa ai',
+        url: window.location.href
+      })
     }
 
 return (<IndexContext.Provider value={{text, setText, nome, setNome, email, setEmail, numero, setNumero, cargo, setCargo, fixo, setFixo, handleSave, handleShare, vcard, isMobile}}>
