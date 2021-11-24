@@ -105,10 +105,18 @@ export default function IndexProvider({ children }) {
     }
 
     function handleShare(){
+      var node = document.getElementById('dados');
+      domtoimage.toPng(node).then(function (dataUrl) {
+        var img = new Image();
+        const link = document.createElement("a");
+        var imgcomp = img.src = dataUrl;
+        link.href = imgcomp
+        console.log(imgcomp)
       navigator.share({
         title: 'vCard ' + nome,
         text: 'vCard de ' + nome,
         files: filesArray
+      })
       })
     }
 
