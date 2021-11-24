@@ -12,7 +12,7 @@ import {ReactComponent as ShareSVG} from './SVGs/share.svg'
 import {ReactComponent as LogoSVG} from './SVGs/logo.svg'
 
 function App() {
-  const { setNome, setEmail, setNumero, setCargo, setFixo, handleSave, handleShare, vcard, isMobile} = React.useContext(IndexContext);  
+  const { setNome, setEmail, setNumero, setCargo, setFixo, handleSave, handleShare, vcard, isMobile, imgcomp} = React.useContext(IndexContext);  
   
   return (
     <div className="QRCodeDivAll">
@@ -33,7 +33,8 @@ function App() {
             </div>
             {isMobile ?
                 <Button color="success" onClick={handleShare}>
-                  COMPARTILHAR <ShareSVG/>
+                  COMPARTILHAR 
+                  <ShareSVG/>
                 </Button>:
               <Button color="success" onClick={handleSave}>
                 DOWNLOAD

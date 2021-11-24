@@ -69,6 +69,8 @@ export default function IndexProvider({ children }) {
 
     console.log(vcard)
 
+    var imgcomp = ''
+
     function handleSave() {
       var node = document.getElementById('dados');
       domtoimage.toPng(node).then(function (dataUrl) {
@@ -83,7 +85,7 @@ export default function IndexProvider({ children }) {
         link.href = imgcomp
         console.log(imgcomp)
         doc.addImage(imgcomp, 'PNG', 1, 1)
-        localStorage.setItem('doc', doc)
+        localStorage.setItem('img', imgcomp)
         doc.save('vCard ' + localStorage.getItem('nome') + '.pdf')
         // link.setAttribute("download", "VCard " + localStorage.getItem('nome') + ".png")
         // link.click()
@@ -95,13 +97,13 @@ export default function IndexProvider({ children }) {
 
     function handleShare(){
       navigator.share({
-        title: 'Teste',
-        text: 'Teste namoral testa ai',
-        url: window.location.href
+        title: 'vCard ' + nome,
+        text: 'vCard de ' + nome,
+        url: URL.createObjectURL(imgcomp)
       })
     }
 
-return (<IndexContext.Provider value={{text, setText, nome, setNome, email, setEmail, numero, setNumero, cargo, setCargo, fixo, setFixo, handleSave, handleShare, vcard, isMobile}}>
+return (<IndexContext.Provider value={{text, setText, nome, setNome, email, setEmail, numero, setNumero, cargo, setCargo, fixo, setFixo, handleSave, handleShare, vcard, isMobile, imgcomp}}>
           {children}
         </IndexContext.Provider>
        );
