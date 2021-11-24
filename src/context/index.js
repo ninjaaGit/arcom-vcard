@@ -12,7 +12,16 @@ export default function IndexProvider({ children }) {
     const [fixo, setFixo] = useState(localStorage.getItem('fixo'))
     const [cargo, setCargo] = useState(localStorage.getItem('cargo'))
     const [isMobile, setIsMobile] = React.useState(false)
-    const filesArray: File[] = [new File([imgcomp], 'teste.jpg', { type: "image/jpeg", lastModified: new Date().getTime() })];
+    const filesArray = [
+      new File(
+        [imgcomp],
+        'test.jpg',
+        {
+          type: "image/jpeg",
+          lastModified: new Date().getTime()
+        }
+      )
+    ];
 
     localStorage.setItem('nome', nome)
     localStorage.setItem('email', email)
