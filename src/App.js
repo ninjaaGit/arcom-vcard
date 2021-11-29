@@ -12,7 +12,7 @@ import {ReactComponent as ShareSVG} from './SVGs/share.svg'
 import {ReactComponent as LogoSVG} from './SVGs/logo.svg'
 
 function App() {
-  const { setNome, setEmail, setNumero, setCargo, setFixo, handleSave, handleShare, vcard, isMobile, imgcomp} = React.useContext(IndexContext);  
+  const { setNome, setEmail, setNumero, setCargo, setFixo, handleSave, handleShare, vcard, isMobile, isVendas} = React.useContext(IndexContext);  
   
   return (
     <div className="QRCodeDivAll">
@@ -20,12 +20,12 @@ function App() {
             <LogoSVG/>
             <Input color="success" disableUnderline="true" className="QRCodeInput" value={localStorage.getItem('nome')} id="QRNome" placeholder="Nome" onChange={(element) => setNome(element.target.value)}></Input>
             <Input color="success" disableUnderline="true" className="QRCodeInput" value={localStorage.getItem('email')} type="email" id="QREmail" placeholder="Email" onChange={(element) => setEmail(element.target.value)}></Input>
-            <Input color="success" disableUnderline="true" className="QRCodeInput" value={localStorage.getItem('cargo')} id="QRCargo" placeholder="Cargo" onChange={(element) => setCargo(element.target.value)}></Input>
+            {!isVendas ? setCargo("Vendas") : <Input color="success" disableUnderline="true" className="QRCodeInput" value={localStorage.getItem('cargo')} id="QRCargo" placeholder="Cargo" onChange={(element) => setCargo(element.target.value)}></Input>}
             <input color="success" data-mask='(00) 00000-0000' maxLength="15" className="QRCodeInput" value={localStorage.getItem('numero')} type="tel" id="QRNumero" placeholder="Celular" onChange={(element) => setNumero(element.target.value)}></input>
             <input color="success" data-mask='(00) 0000-0000' maxLength="14" className="QRCodeInput" value={localStorage.getItem('fixo')} type="tel" id="QRFixo" placeholder="Fixo (Opcional)" onChange={(element) => setFixo(element.target.value)}></input>
         </div>
         <div className="QRCodeDivContainerPai">
-          <div className="QRCodeDivContainer">
+          <div className="QRCodeDivContainer"> 
             <div id="dados" className="QRCodeDiv">
                 <LogoSVG className="QRCodeImage"/>
                 <QRCodeCanvas text={vcard}></QRCodeCanvas>

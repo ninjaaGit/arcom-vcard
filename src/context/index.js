@@ -12,6 +12,7 @@ export default function IndexProvider({ children }) {
     const [fixo, setFixo] = useState(localStorage.getItem('fixo'))
     const [cargo, setCargo] = useState(localStorage.getItem('cargo'))
     const [isMobile, setIsMobile] = React.useState(false)
+    const [isVendas, setIsVendas] = React.useState(true)
     
 
     localStorage.setItem('nome', nome)
@@ -43,6 +44,16 @@ export default function IndexProvider({ children }) {
         setIsMobile(true)
       }
     })
+    
+    useEffect(() => {      
+      if (current === "?setor=8") {
+        setIsVendas(true)
+      } else {
+        setIsVendas(false)
+      }
+    },[])
+
+    console.log(isVendas)
 
     var vcard_begin = 'BEGIN:VCARD\nVERSION:3.0\n';
     
@@ -72,6 +83,12 @@ export default function IndexProvider({ children }) {
 
     var imgcomp = ''
 
+    var current = window.location.search
+
+    console.log(current)
+
+    console.log(cargo)
+
     function handleSave() {
       var node = document.getElementById('dados');
       domtoimage.toPng(node).then(function (dataUrl) {
@@ -99,7 +116,6 @@ export default function IndexProvider({ children }) {
     function handleShare(){
       var node = document.getElementById('dados');
       domtoimage.toBlob(node).then(function (dataUrl) {
-        imgcomp =  dataUrl;
         const filesArray = [
           new File(
             [dataUrl],
@@ -111,7 +127,6 @@ export default function IndexProvider({ children }) {
         ];
         console.log(imgcomp)
       navigator.share({
-        title: 'vCard ' + nome,
         text: 'vCard de ' + nome,
         files: filesArray
       })
