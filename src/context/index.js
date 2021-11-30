@@ -46,7 +46,7 @@ export default function IndexProvider({ children }) {
     })
     
     useEffect(() => {      
-      if (current === "?setor=8") {
+      if (current == "?setor=8") {
         setIsVendas(true)
       } else {
         setIsVendas(false)
@@ -79,15 +79,9 @@ export default function IndexProvider({ children }) {
 
     var vcard = vcard_begin+nomeV+nV+emailV+telefoneV+fixoV+orgV+roleV+adrV+urlV+vcard_end;
 
-    console.log(vcard)
-
     var imgcomp = ''
 
     var current = window.location.search
-
-    console.log(current)
-
-    console.log(cargo)
 
     function handleSave() {
       var node = document.getElementById('dados');
@@ -133,7 +127,7 @@ export default function IndexProvider({ children }) {
       })
     }
 
-return (<IndexContext.Provider value={{text, setText, nome, setNome, email, setEmail, numero, setNumero, cargo, setCargo, fixo, setFixo, handleSave, handleShare, vcard, isMobile, imgcomp}}>
+return (<IndexContext.Provider value={{text, setText, nome, setNome, email, setEmail, numero, setNumero, cargo, setCargo, fixo, setFixo, handleSave, handleShare, vcard, isMobile, imgcomp,isVendas}}>
           {children}
         </IndexContext.Provider>
        );
