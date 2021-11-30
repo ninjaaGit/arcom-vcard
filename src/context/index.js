@@ -12,15 +12,17 @@ export default function IndexProvider({ children }) {
     const [fixo, setFixo] = useState(localStorage.getItem('fixo'))
     const [cargo, setCargo] = useState(localStorage.getItem('cargo'))
     const [isMobile, setIsMobile] = React.useState(false)
-    const [isVendas, setIsVendas] = React.useState(true)
+    const [isVendas, setIsVendas] = React.useState(false)
     
 
     localStorage.setItem('nome', nome)
     localStorage.setItem('email', email)
     localStorage.setItem('numero', numero)
     localStorage.setItem('fixo', fixo)
-    localStorage.setItem('cargo', cargo)
-
+    
+    if (isVendas == false) {
+      localStorage.setItem('cargo', cargo)
+    }
     if (nome === null) {
       setNome("")
     }
@@ -46,7 +48,7 @@ export default function IndexProvider({ children }) {
     })
     
     useEffect(() => {      
-      if (current == "?setor=8") {
+      if (current.includes("?setor")) {
         setIsVendas(true)
       } else {
         setIsVendas(false)
