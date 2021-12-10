@@ -55,8 +55,6 @@ export default function IndexProvider({ children }) {
       }
     },[])
 
-    console.log(isVendas)
-
     var vcard_begin = 'BEGIN:VCARD\nVERSION:3.0\n';
     
     var vcard_end = 'END:VCARD;';
@@ -97,7 +95,6 @@ export default function IndexProvider({ children }) {
         const link = document.createElement("a");
         imgcomp = img.src = dataUrl;
         link.href = imgcomp
-        console.log(imgcomp)
         doc.addImage(imgcomp, 'PNG', 1, 1)
         localStorage.setItem('img', imgcomp)
         doc.save('vCard ' + localStorage.getItem('nome') + '.pdf')
@@ -121,12 +118,11 @@ export default function IndexProvider({ children }) {
             }
           )
         ];
-        console.log(imgcomp)
-      navigator.share({
-        text: 'vCard de ' + nome,
-        files: filesArray
-      })
-      })
+        navigator.share({
+          text: 'vCard de ' + nome,
+          files: filesArray
+        })
+        })
     }
 
 return (<IndexContext.Provider value={{text, setText, nome, setNome, email, setEmail, numero, setNumero, cargo, setCargo, fixo, setFixo, handleSave, handleShare, vcard, isMobile, imgcomp,isVendas}}>
